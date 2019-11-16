@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         else {
-            Toast.makeText(this, "You are already in Landing page, you fool!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "You are already on the bird record page, you fool!", Toast.LENGTH_SHORT).show();
         }
 
         return super.onOptionsItemSelected(item);

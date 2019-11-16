@@ -32,8 +32,8 @@
 
     <EditText
         android:id="@+id/editTextSighterName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="302dp"
+        android:layout_height="47dp"
         android:layout_marginTop="60dp"
         android:ems="10"
         android:hint="Name of Person Reporting"

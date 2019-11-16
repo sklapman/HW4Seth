@@ -60,7 +60,7 @@ public class SearchBird extends AppCompatActivity implements View.OnClickListene
         }
 
         else {
-            Toast.makeText(this, "You are already in Landing page, you fool!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "You are already on the search page, you fool!", Toast.LENGTH_SHORT).show();
         }
 
         return super.onOptionsItemSelected(item);
