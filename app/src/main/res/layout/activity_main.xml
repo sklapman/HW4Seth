@@ -6,13 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <EditText
+        android:id="@+id/editTextEnterBirdName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:hint="Bird Name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        android:id="@+id/editTextEnterZip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:hint="Zip Code"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/editTextEnterBirdName"
+        app:layout_constraintStart_toStartOf="@+id/editTextEnterBirdName"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEnterBirdName" />
+
+    <EditText
+        android:id="@+id/editTextSighterName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:hint="Name of Person Reporting"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/editTextEnterZip"
+        app:layout_constraintStart_toStartOf="@+id/editTextEnterZip"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEnterZip" />
+
+    <Button
+        android:id="@+id/buttonSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Submit"
+        app:layout_constraintEnd_toEndOf="@+id/editTextSighterName"
+        app:layout_constraintStart_toStartOf="@+id/editTextSighterName"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSighterName" />
 </androidx.constraintlayout.widget.ConstraintLayout>

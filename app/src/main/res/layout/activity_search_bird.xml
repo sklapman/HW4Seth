@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchBird">
+
+    <EditText
+        android:id="@+id/editTextZipSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:hint="Search Zip Code"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Search"
+        app:layout_constraintEnd_toEndOf="@+id/editTextZipSearch"
+        app:layout_constraintStart_toStartOf="@+id/editTextZipSearch"
+        app:layout_constraintTop_toBottomOf="@+id/editTextZipSearch" />
+
+    <TextView
+        android:id="@+id/textViewFindBird"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Find Bird"
+        app:layout_constraintEnd_toEndOf="@+id/buttonSearch"
+        app:layout_constraintStart_toStartOf="@+id/buttonSearch"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSearch" />
+
+    <TextView
+        android:id="@+id/textViewFindPerson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Find Person"
+        app:layout_constraintEnd_toEndOf="@+id/textViewFindBird"
+        app:layout_constraintStart_toStartOf="@+id/textViewFindBird"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFindBird" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
