@@ -24,8 +24,8 @@ import com.google.firebase.database.FirebaseDatabase;
 public class SearchBird extends AppCompatActivity implements View.OnClickListener{
 
     EditText editTextSearchZip;
-    Button buttonSearch;
-    TextView textViewFindBird, textViewFindPerson;
+    Button buttonSearch, buttonAddImportance;
+    TextView textViewFindBird, textViewFindPerson, textViewFindImportance;
 
 
     @Override
@@ -35,9 +35,11 @@ public class SearchBird extends AppCompatActivity implements View.OnClickListene
 
         editTextSearchZip = findViewById(R.id.editTextZipSearch);
         buttonSearch = findViewById(R.id.buttonSearch);
+        buttonAddImportance = findViewById(R.id.buttonAddImportance);
 
         textViewFindBird = findViewById(R.id.textViewFindBird);
         textViewFindPerson = findViewById(R.id.textViewFindPerson);
+        textViewFindImportance = findViewById(R.id.textViewFindImportance);
 
         buttonSearch.setOnClickListener(this);
     }
@@ -83,9 +85,11 @@ public class SearchBird extends AppCompatActivity implements View.OnClickListene
                     birds foundbird = dataSnapshot.getValue(birds.class);
                     String findbirdname = foundbird.birdName;
                     String findSpotter = foundbird.personSearching;
+                    Integer findimportance = foundbird.importance;
 
                     textViewFindBird.setText(findbirdname);
                     textViewFindPerson.setText(findSpotter);
+                    textViewFindImportance.setText(findimportance);
 
 
                 }
@@ -112,6 +116,15 @@ public class SearchBird extends AppCompatActivity implements View.OnClickListene
             });
 
         }
+
+        if (v == buttonAddImportance) {
+
+           // Integer CurrentImportance = textViewFindImportance;
+
+
+
+        }
+
 
     }
 }

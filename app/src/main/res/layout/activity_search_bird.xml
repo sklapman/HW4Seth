@@ -25,28 +25,52 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="Search"
-        app:layout_constraintEnd_toEndOf="@+id/editTextZipSearch"
-        app:layout_constraintStart_toStartOf="@+id/editTextZipSearch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextZipSearch" />
 
     <TextView
         android:id="@+id/textViewFindBird"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="35dp"
         android:text="Find Bird"
-        app:layout_constraintEnd_toEndOf="@+id/buttonSearch"
-        app:layout_constraintStart_toStartOf="@+id/buttonSearch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonSearch" />
 
     <TextView
         android:id="@+id/textViewFindPerson"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="44dp"
         android:text="Find Person"
-        app:layout_constraintEnd_toEndOf="@+id/textViewFindBird"
-        app:layout_constraintStart_toStartOf="@+id/textViewFindBird"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewFindBird" />
+
+    <Button
+        android:id="@+id/buttonAddImportance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="53dp"
+        android:text="Add Importance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFindPerson" />
+
+    <TextView
+        android:id="@+id/textViewFindImportance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/buttonAddImportance"
+        app:layout_constraintStart_toStartOf="@+id/buttonAddImportance"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAddImportance" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
