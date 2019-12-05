@@ -118,6 +118,7 @@ public class SearchBird extends AppCompatActivity implements View.OnClickListene
             String importanceupdate = textViewFindImportance.getText().toString();
             int importanceInt = Integer.parseInt(importanceupdate);
             int updatedImportance = importanceInt + 1;
+          //  textViewFindImportance.setText(updatedImportance);
         }
     }
 
