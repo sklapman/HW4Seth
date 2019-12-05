@@ -1,5 +1,6 @@
 package com.example.hw4;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,10 +10,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class LoginMain extends AppCompatActivity implements View.OnClickListener {
 
     Button buttonLogin, buttonRegister;
     EditText editTextEmail, editTextPassword;
+
+    //Declare instance of FirebaseAuth
+
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +38,9 @@ public class LoginMain extends AppCompatActivity implements View.OnClickListener
         buttonRegister.setOnClickListener(this);
         buttonLogin.setOnClickListener(this);
 
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
+
 
     }
 
@@ -37,16 +50,38 @@ public class LoginMain extends AppCompatActivity implements View.OnClickListener
         String email = editTextEmail.getText().toString();
         String password = editTextPassword.getText().toString();
 
-        if (v == buttonRegister){
-            Toast.makeText(this, "Registered!", Toast.LENGTH_SHORT).show();
+        if (v == buttonRegister) {
+            mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(LoginMain.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                                // Sign in success, update UI with the signed-in user's information
+                            } else {
+                                Toast.makeText(LoginMain.this, "Registration Failed", Toast.LENGTH_SHORT).show();
+                                // If sign in fails, display a message to the user.
+                            }
+
+                        }
+                    });
+        } else if (v == buttonLogin) {
+            final Intent MainIntent = new Intent(this,MainActivity.class);
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                startActivity(MainIntent);
+                            } else {
+                                Toast.makeText(LoginMain.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                                // If sign in fails, display a message to the user.
+                            }
+
+                            // ...
+                        }
+                    });
         }
-
-        else if (v == buttonLogin){
-            Intent MainIntent = new Intent(this,MainActivity.class);
-            startActivity(MainIntent);
-
-        }
-
-
     }
+
 }

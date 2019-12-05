@@ -72,9 +72,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String submitBirdName = editTextBirdName.getText().toString();
             String submitZip = editTextZipCode.getText().toString();
             String submitPerson = editTextPersonSearching.getText().toString();
-            Integer submitImportance = 0;
+            //String submitImportance = "0";
 
-            birds createbirds = new birds(submitBirdName,submitZip,submitPerson,submitImportance);
+            birds createbirds = new birds(submitBirdName,submitZip,submitPerson,"0");
 
             myRef.push().setValue(createbirds);
 
