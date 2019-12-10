@@ -8,4 +8,7 @@
     <item
         android:id="@+id/itemSearchBird"
         android:title="Search Bird" />
+    <item
+        android:id="@+id/itemLogOut"
+        android:title="Log Out" />
 </menu>

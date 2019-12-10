@@ -19,6 +19,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    //Declare variables
+
     EditText editTextBirdName, editTextZipCode, editTextPersonSearching;
     Button buttonSubmit;
 
@@ -38,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonSubmit.setOnClickListener(this);
     }
 
+    //Insert Menu into activity
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -47,12 +51,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onCreateOptionsMenu(menu);
     }
 
+    //Give action to each menu items to switch between pages
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         if (item.getItemId() == R.id.itemSearchBird) {
             Intent searchIntent = new Intent(this, SearchBird.class);
             startActivity(searchIntent);
+        }
+
+        else if (item.getItemId() == R.id.itemLogOut) {
+            Intent logoutIntent = new Intent(this, LoginMain.class);
+            startActivity(logoutIntent);
+
         }
 
         else {
@@ -65,17 +77,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
+        //Declare database variables
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("birds");
 
         if (v == buttonSubmit) {
+
+            //if button is selected, then read the users texts and add them to local variables
             String submitBirdName = editTextBirdName.getText().toString();
             String submitZip = editTextZipCode.getText().toString();
             String submitPerson = editTextPersonSearching.getText().toString();
-            //String submitImportance = "0";
 
+            //create birds variable from the individual variables.
             birds createbirds = new birds(submitBirdName,submitZip,submitPerson,"0");
 
+            //PUsh birds class to firebase
             myRef.push().setValue(createbirds);
 
         }

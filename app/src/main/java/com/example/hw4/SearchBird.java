@@ -47,6 +47,8 @@ public class SearchBird extends AppCompatActivity implements View.OnClickListene
         buttonAddImportance.setOnClickListener(this);
     }
 
+    //Insert Menu into activity
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -56,12 +58,19 @@ public class SearchBird extends AppCompatActivity implements View.OnClickListene
         return super.onCreateOptionsMenu(menu);
     }
 
+    //Give action to each menu items to switch between pages
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         if (item.getItemId() == R.id.itemEnterBird) {
             Intent enterIntent = new Intent(this, MainActivity.class);
             startActivity(enterIntent);
+
+        } else if (item.getItemId() == R.id.itemLogOut) {
+                Intent logoutIntent = new Intent(this, LoginMain.class);
+                startActivity(logoutIntent);
+
         } else {
             Toast.makeText(this, "You are already on the search page, you fool!", Toast.LENGTH_SHORT).show();
         }
@@ -72,20 +81,26 @@ public class SearchBird extends AppCompatActivity implements View.OnClickListene
     @Override
     public void onClick(View v) {
 
+        //Declare firebase variables
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("birds");
 
+        //When search button is clicked, sort all listings by zip code, then create listener with most recent entry
         if (v == buttonSearch) {
             String findzip = editTextSearchZip.getText().toString();
             myRef.orderByChild("Zip").equalTo(findzip).addChildEventListener(new ChildEventListener() {
 
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    //create local variables based on the data in the firebase database
 
                     birds foundbird = dataSnapshot.getValue(birds.class);
                     String findbirdname = foundbird.birdName;
                     String findSpotter = foundbird.personSearching;
                     String findimportance = foundbird.importance;
+
+                    //Set the text fields to the variables from the database.
 
                     textViewFindBird.setText(findbirdname);
                     textViewFindPerson.setText(findSpotter);
@@ -115,6 +130,8 @@ public class SearchBird extends AppCompatActivity implements View.OnClickListene
             });
 
         }
+
+        //If Add Importance button is selected, add 1 to the importance factor.
 
         if (v == buttonAddImportance) {
             String importanceupdate = textViewFindImportance.getText().toString();
