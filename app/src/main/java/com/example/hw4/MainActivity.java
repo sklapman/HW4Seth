@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String submitPerson = editTextPersonSearching.getText().toString();
 
             //create birds variable from the individual variables.
-            birds createbirds = new birds(submitBirdName,submitZip,submitPerson,"0");
+            birds createbirds = new birds(submitBirdName,submitZip,submitPerson,0);
 
             //PUsh birds class to firebase
             myRef.push().setValue(createbirds);

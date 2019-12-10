@@ -153,14 +153,14 @@ public class SearchBird extends AppCompatActivity implements View.OnClickListene
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
                     birds foundbird = dataSnapshot.getValue(birds.class);
-                    String findimportance = foundbird.importance;
+                    int findimportance = foundbird.importance;
                     String Changekey = dataSnapshot.getKey();
-                    int importanceInt = Integer.parseInt(findimportance);
-                    int updatedImportance = importanceInt + 1;
-                    String StringImportance = String.valueOf(updatedImportance);
+                    //int importanceInt = Integer.parseInt(findimportance);
+                    int updatedImportance = findimportance + 1;
+                    //String StringImportance = String.valueOf(updatedImportance);
 
 
-                    myRef.child(Changekey).child("importance").setValue(StringImportance);
+                    myRef.child(Changekey).child("importance").setValue(updatedImportance);
 
                 }
 
@@ -184,20 +184,6 @@ public class SearchBird extends AppCompatActivity implements View.OnClickListene
 
                 }
             });
-
-//            String importanceupdate = textViewFindImportance.getText().toString();
-//            int importanceInt = Integer.parseInt(importanceupdate);
-//            int updatedImportance = importanceInt + 1;
-//
-//
-//            String submitBirdName = textViewFindBird.getText().toString();
-//            String submitZip = editTextSearchZip.getText().toString();
-//            String submitPerson = textViewFindPerson.getText().toString();
-//            String submitImportance = String.valueOf(updatedImportance);
-//
-//            birds updatebirds = new birds(submitBirdName,submitZip,submitPerson, submitImportance);
-//
-//            myRef.push().setValue(updatebirds);
 
         }
     }
