@@ -65,6 +65,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent logoutIntent = new Intent(this, LoginMain.class);
             startActivity(logoutIntent);
 
+        } else if (item.getItemId() == R.id.ItemHighestImportance) {
+            Intent logoutIntent = new Intent(this, HighestImportance.class);
+            startActivity(logoutIntent);
+
         }
 
         else {

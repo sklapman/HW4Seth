@@ -71,6 +71,10 @@ public class SearchBird extends AppCompatActivity implements View.OnClickListene
                 Intent logoutIntent = new Intent(this, LoginMain.class);
                 startActivity(logoutIntent);
 
+        } else if (item.getItemId() == R.id.ItemHighestImportance) {
+            Intent logoutIntent = new Intent(this, HighestImportance.class);
+            startActivity(logoutIntent);
+
         } else {
             Toast.makeText(this, "You are already on the search page, you fool!", Toast.LENGTH_SHORT).show();
         }
@@ -84,11 +88,20 @@ public class SearchBird extends AppCompatActivity implements View.OnClickListene
         //Declare firebase variables
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("birds");
+        final DatabaseReference myRef = database.getReference("birds");
 
         //When search button is clicked, sort all listings by zip code, then create listener with most recent entry
         if (v == buttonSearch) {
             String findzip = editTextSearchZip.getText().toString();
+            int StringInt = Integer.parseInt(findzip);
+
+            if (StringInt <= 100000) {
+                Toast.makeText(this, "Zip Code is Invalid", Toast.LENGTH_SHORT).show();
+            } else if (StringInt >= 999999) {
+                Toast.makeText(this, "Zip Code is Invalid", Toast.LENGTH_SHORT).show();
+            }
+
+            else
             myRef.orderByChild("Zip").equalTo(findzip).addChildEventListener(new ChildEventListener() {
 
                 @Override
@@ -134,6 +147,41 @@ public class SearchBird extends AppCompatActivity implements View.OnClickListene
         //If Add Importance button is selected, add 1 to the importance factor.
 
         if (v == buttonAddImportance) {
+//            String findzip = editTextSearchZip.getText().toString();
+//
+//            myRef.orderByChild("Zip").equalTo(findzip).addChildEventListener(new ChildEventListener() {
+//
+//                @Override
+//                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//                    String importanceupdate = dataSnapshot.child("importance").getKey();
+//                    int importanceInt = Integer.parseInt(importanceupdate);
+//                    int updatedImportance = importanceInt + 1;
+//                    myRef.child(importanceupdate).setValue(updatedImportance);
+//
+//                }
+//
+//                @Override
+//                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//                }
+//
+//                @Override
+//                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+//
+//                }
+//
+//                @Override
+//                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                }
+//            });
+
             String importanceupdate = textViewFindImportance.getText().toString();
             int importanceInt = Integer.parseInt(importanceupdate);
             int updatedImportance = importanceInt + 1;

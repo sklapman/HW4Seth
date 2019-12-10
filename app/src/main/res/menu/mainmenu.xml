@@ -9,6 +9,9 @@
         android:id="@+id/itemSearchBird"
         android:title="Search Bird" />
     <item
+        android:id="@+id/ItemHighestImportance"
+        android:title="Highest Importance" />
+    <item
         android:id="@+id/itemLogOut"
         android:title="Log Out" />
 </menu>
