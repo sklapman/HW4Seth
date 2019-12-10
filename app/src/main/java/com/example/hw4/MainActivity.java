@@ -95,6 +95,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //PUsh birds class to firebase
             myRef.push().setValue(createbirds);
 
+            Toast.makeText(this, "Submission Complete", Toast.LENGTH_SHORT).show();
+
         }
 
 
