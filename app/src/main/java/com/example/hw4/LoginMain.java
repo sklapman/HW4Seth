@@ -71,13 +71,13 @@ public class LoginMain extends AppCompatActivity implements View.OnClickListener
                         }
                     });
         } else if (v == buttonLogin) {
-            final Intent MainIntent = new Intent(this,MainActivity.class);
+            final Intent HighestIntent = new Intent(this,HighestImportance.class);
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                startActivity(MainIntent);
+                                startActivity(HighestIntent);
                             } else {
                                 Toast.makeText(LoginMain.this, "Login Failed", Toast.LENGTH_SHORT).show();
                                 // If sign in fails, display a message to the user.

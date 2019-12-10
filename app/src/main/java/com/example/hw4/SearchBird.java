@@ -41,7 +41,7 @@ public class SearchBird extends AppCompatActivity implements View.OnClickListene
 
         textViewFindBird = findViewById(R.id.textViewFindBird);
         textViewFindPerson = findViewById(R.id.textViewFindPerson);
-        textViewFindImportance = findViewById(R.id.textViewFindImportance);
+        //textViewFindImportance = findViewById(R.id.textViewFindImportance);
 
         buttonSearch.setOnClickListener(this);
         buttonAddImportance.setOnClickListener(this);
@@ -111,13 +111,13 @@ public class SearchBird extends AppCompatActivity implements View.OnClickListene
                     birds foundbird = dataSnapshot.getValue(birds.class);
                     String findbirdname = foundbird.birdName;
                     String findSpotter = foundbird.personSearching;
-                    String findimportance = foundbird.importance;
+                    //String findimportance = foundbird.importance;
 
                     //Set the text fields to the variables from the database.
 
                     textViewFindBird.setText(findbirdname);
                     textViewFindPerson.setText(findSpotter);
-                    textViewFindImportance.setText(findimportance);
+                    //textViewFindImportance.setText(findimportance);
 
                 }
 
@@ -144,57 +144,60 @@ public class SearchBird extends AppCompatActivity implements View.OnClickListene
 
         }
 
-        //If Add Importance button is selected, add 1 to the importance factor.
 
         if (v == buttonAddImportance) {
-//            String findzip = editTextSearchZip.getText().toString();
-//
-//            myRef.orderByChild("Zip").equalTo(findzip).addChildEventListener(new ChildEventListener() {
-//
-//                @Override
-//                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//
-//                    String importanceupdate = dataSnapshot.child("importance").getKey();
-//                    int importanceInt = Integer.parseInt(importanceupdate);
-//                    int updatedImportance = importanceInt + 1;
-//                    myRef.child(importanceupdate).setValue(updatedImportance);
-//
-//                }
-//
-//                @Override
-//                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//
-//                }
-//
-//                @Override
-//                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-//
-//                }
-//
-//                @Override
-//                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                }
-//            });
+            String findzip = editTextSearchZip.getText().toString();
+            myRef.orderByChild("Zip").equalTo(findzip).addChildEventListener(new ChildEventListener() {
 
-            String importanceupdate = textViewFindImportance.getText().toString();
-            int importanceInt = Integer.parseInt(importanceupdate);
-            int updatedImportance = importanceInt + 1;
-            
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-            String submitBirdName = textViewFindBird.getText().toString();
-            String submitZip = editTextSearchZip.getText().toString();
-            String submitPerson = textViewFindPerson.getText().toString();
-            String submitImportance = String.valueOf(updatedImportance);
+                    birds foundbird = dataSnapshot.getValue(birds.class);
+                    String findimportance = foundbird.importance;
+                    String Changekey = dataSnapshot.getKey();
+                    int importanceInt = Integer.parseInt(findimportance);
+                    int updatedImportance = importanceInt + 1;
+                    String StringImportance = String.valueOf(updatedImportance);
 
-            birds updatebirds = new birds(submitBirdName,submitZip,submitPerson, submitImportance);
 
-            myRef.push().setValue(updatebirds);
+                    myRef.child(Changekey).child("importance").setValue(StringImportance);
+
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+//            String importanceupdate = textViewFindImportance.getText().toString();
+//            int importanceInt = Integer.parseInt(importanceupdate);
+//            int updatedImportance = importanceInt + 1;
+//
+//
+//            String submitBirdName = textViewFindBird.getText().toString();
+//            String submitZip = editTextSearchZip.getText().toString();
+//            String submitPerson = textViewFindPerson.getText().toString();
+//            String submitImportance = String.valueOf(updatedImportance);
+//
+//            birds updatebirds = new birds(submitBirdName,submitZip,submitPerson, submitImportance);
+//
+//            myRef.push().setValue(updatebirds);
 
         }
     }

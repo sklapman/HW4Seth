@@ -40,6 +40,22 @@ public class HighestImportance extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
+                birds foundbird = dataSnapshot.getValue(birds.class);
+                String findbirdname = foundbird.birdName;
+                String findSpotter = foundbird.personSearching;
+                String findzip = foundbird.Zip;
+
+                //Set the text fields to the variables from the database.
+
+                textViewHighestBird.setText(findbirdname);
+                textViewHighestBirdSpotter.setText(findSpotter);
+                textViewHighestBirdZip.setText(findzip);
+
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 //create local variables based on the data in the firebase database
 
                 birds foundbird = dataSnapshot.getValue(birds.class);
@@ -52,12 +68,6 @@ public class HighestImportance extends AppCompatActivity {
                 textViewHighestBird.setText(findbirdname);
                 textViewHighestBirdSpotter.setText(findSpotter);
                 textViewHighestBirdZip.setText(findzip);
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
             }
 
             @Override
