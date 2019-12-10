@@ -17,6 +17,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginMain extends AppCompatActivity implements View.OnClickListener {
 
+    //Declare variables
+
     Button buttonLogin, buttonRegister;
     EditText editTextEmail, editTextPassword;
 
@@ -41,14 +43,17 @@ public class LoginMain extends AppCompatActivity implements View.OnClickListener
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
-
     }
 
     @Override
     public void onClick(View v) {
 
+        //Create string variables from information user entered into text boxes
+
         String email = editTextEmail.getText().toString();
         String password = editTextPassword.getText().toString();
+
+        //if Register button is selected, create a user in firebase
 
         if (v == buttonRegister) {
             mAuth.createUserWithEmailAndPassword(email, password)

@@ -23,6 +23,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class SearchBird extends AppCompatActivity implements View.OnClickListener {
 
+    //Declare variables
+
     EditText editTextSearchZip;
     Button buttonSearch, buttonAddImportance;
     TextView textViewFindBird, textViewFindPerson, textViewFindImportance;
